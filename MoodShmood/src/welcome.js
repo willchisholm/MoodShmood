@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import {
+  StyleSheet, View, Button, Text,
+} from 'react-native';
 import {
   // createStackNavigator,
   createAppContainer,
@@ -10,7 +12,13 @@ import { MainTabBar } from './navigation/main_tab_bar';
 // import Ionicons from 'react-native-vector-icons/FontAwesome';
 // import { Button } from 'react-native';
 
-const Welcome = props => (<View style={styles.container}><Button onPress={() => { props.navigation.navigate('Main'); }} title="Welcome" /></View>);
+const Welcome = props => (
+  <View style={styles.container}>
+    <Text style={styles.title}>MoodShmood</Text>
+    <Text>We can help you track your mood over time and offer insights into your personality. Simply enter journal entries to our chat bot daily!</Text>
+    <Button onPress={() => { props.navigation.navigate('Main'); }} title="Start Messaging" />
+  </View>
+);
 
 // nest stack navigator to handle two internal views
 const TopNavigation = createSwitchNavigator({
@@ -27,6 +35,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
+  },
+  title: {
+    fontSize: 40,
+    color: 'black',
   },
 });
 
