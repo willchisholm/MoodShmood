@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/destructuring-assignment */
 // adapted from https://github.com/FaridSafi/react-native-gifted-chat
 
@@ -9,12 +10,25 @@ import {
   StyleSheet,
 } from 'react-native';
 
+// import {
+//   version, url, iam_apikey,
+// } from 'react-native-dotenv';
+
+// const AssistantV1 = require('ibm-watson/assistant/v1');
+
+// const assistant = new AssistantV1({
+//   version,
+//   iam_apikey,
+//   url,
+// });
+
 class ChatTab extends React.Component {
   state = {
     messages: [],
   }
 
   componentWillMount() {
+    // console.log(assistant);
     this.setState({
       messages: [
         {

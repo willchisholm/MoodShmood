@@ -7,10 +7,10 @@ import {
   createSwitchNavigator,
 } from 'react-navigation';
 import {
-  StyleSheet,
-  // View,
-  // Text,
-  // Button,
+// StyleSheet,
+// View,
+// Text,
+// Button,
 } from 'react-native';
 import ChatTab from '../chat';
 import ReportsTab from '../reports';

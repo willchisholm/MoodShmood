@@ -1,0 +1,287 @@
+{
+    "name": "UserCare",
+    "intents": [
+      {
+        "intent": "Introduction",
+        "examples": [
+          {
+            "text": "Kristie"
+          },
+          {
+            "text": "Kristie Chow"
+          },
+          {
+            "text": "Lindsey Hodel"
+          },
+          {
+            "text": "Lindsey"
+          },
+          {
+            "text": "Will"
+          },
+          {
+            "text": "Will Chisholm"
+          },
+          {
+            "text": "Katie"
+          },
+          {
+            "text": "Katherine"
+          },
+          {
+            "text": "Katie Bernardez"
+          },
+          {
+            "text": "Charles Palmer"
+          },
+          {
+            "text": "Palmer"
+          },
+          {
+            "text": "Charles"
+          }
+        ],
+        "description": ""
+      },
+      {
+        "intent": "MoodDescriptionBad",
+        "examples": [
+          {
+            "text": "I'm feeling sad"
+          },
+          {
+            "text": "I want to cry"
+          },
+          {
+            "text": "I want to die"
+          },
+          {
+            "text": "I had a really bad day"
+          },
+          {
+            "text": "Sad"
+          },
+          {
+            "text": "Crying"
+          },
+          {
+            "text": "ugh"
+          },
+          {
+            "text": ":("
+          },
+          {
+            "text": "bad"
+          },
+          {
+            "text": "awful"
+          },
+          {
+            "text": "depressed"
+          },
+          {
+            "text": "anxious"
+          },
+          {
+            "text": "stressed"
+          },
+          {
+            "text": "nauseous"
+          },
+          {
+            "text": "meh"
+          },
+          {
+            "text": "That’s tough. If you want to, you can tell me more about that, or we can talk about something else."
+          },
+          {
+            "text": "Yeah I’ve been super anxious about my biology class and I haven’t been doing as well as I hoped I would and I feel like there’s so much pressure on me now since I’m struggling to stay focused."
+          }
+        ],
+        "description": ""
+      },
+      {
+        "intent": "MoodDescriptionGood",
+        "examples": [
+          {
+            "text": "I'm so happy"
+          },
+          {
+            "text": "I had a great day"
+          },
+          {
+            "text": "Woohoo"
+          },
+          {
+            "text": "Yay"
+          },
+          {
+            "text": "Things are going well"
+          },
+          {
+            "text": "I am pleased"
+          },
+          {
+            "text": "I am excited"
+          },
+          {
+            "text": ":)"
+          },
+          {
+            "text": "Good day today"
+          },
+          {
+            "text": "I am living life"
+          },
+          {
+            "text": "Everything is good"
+          },
+          {
+            "text": "Well"
+          }
+        ],
+        "description": "Positive moods"
+      }
+    ],
+    "entities": [
+      {
+        "entity": "sys-person",
+        "values": []
+      }
+    ],
+    "language": "en",
+    "metadata": {
+      "api_version": {
+        "major_version": "v1",
+        "minor_version": "2018-09-20"
+      }
+    },
+    "description": "",
+    "dialog_nodes": [
+      {
+        "type": "standard",
+        "title": "Respond empathetically",
+        "output": {
+          "generic": [
+            {
+              "values": [
+                {
+                  "text": "I’m sorry to hear that, what’s wrong?"
+                },
+                {
+                  "text": "That’s tough. If you want to, you can tell me more about that, or we can talk about something else."
+                },
+                {
+                  "text": "I can definitely understand why that is overwhelming for you. Is there anything else you want to share with me today?"
+                }
+              ],
+              "response_type": "text",
+              "selection_policy": "sequential"
+            }
+          ]
+        },
+        "metadata": {},
+        "conditions": "#MoodDescriptionBad",
+        "dialog_node": "node_2_1558888199960",
+        "previous_sibling": "node_1_1558885212676"
+      },
+      {
+        "type": "standard",
+        "title": "Ask for more information",
+        "output": {
+          "generic": [
+            {
+              "values": [
+                {
+                  "text": "That’s tough. If you want to, you can tell me more about that, or we can talk about something else.\n"
+                }
+              ],
+              "response_type": "text",
+              "selection_policy": "sequential"
+            }
+          ]
+        },
+        "metadata": {},
+        "conditions": "#MoodDescriptionBad",
+        "dialog_node": "node_3_1558888224278",
+        "previous_sibling": "node_2_1558888199960"
+      },
+      {
+        "type": "standard",
+        "title": "Anything else",
+        "output": {
+          "generic": [
+            {
+              "values": [
+                {
+                  "text": "Thanks for talking to me today. I hope you feel better soon and continue to come back to chat. In the meantime, you can always check on the history of your mood with me!"
+                },
+                {
+                  "text": ""
+                },
+                {
+                  "text": ""
+                }
+              ],
+              "response_type": "text",
+              "selection_policy": "sequential"
+            }
+          ]
+        },
+        "metadata": {},
+        "conditions": "anything_else",
+        "dialog_node": "Anything else",
+        "previous_sibling": "node_3_1558888224278"
+      },
+      {
+        "type": "standard",
+        "title": "Ask about them",
+        "output": {
+          "generic": [
+            {
+              "values": [
+                {
+                  "text": "How are you doing today, @sys-person.literal?"
+                }
+              ],
+              "response_type": "text",
+              "selection_policy": "sequential"
+            }
+          ]
+        },
+        "metadata": {},
+        "conditions": "#Introduction",
+        "dialog_node": "node_1_1558885212676",
+        "previous_sibling": "Welcome"
+      },
+      {
+        "type": "standard",
+        "title": "Welcome",
+        "output": {
+          "generic": [
+            {
+              "values": [
+                {
+                  "text": "Hi, I'm Kahoot! Thanks for checking in today - what's your name?"
+                }
+              ],
+              "response_type": "text",
+              "selection_policy": "sequential"
+            }
+          ]
+        },
+        "metadata": {},
+        "conditions": "welcome",
+        "dialog_node": "Welcome"
+      }
+    ],
+    "workspace_id": "e3d15e39-9c55-4ec9-9c6b-72726b9ec7d1",
+    "counterexamples": [],
+    "system_settings": {
+      "tooling": {
+        "store_generic_responses": true
+      }
+    },
+    "learning_opt_out": false,
+    "status": "Available"
+  }
